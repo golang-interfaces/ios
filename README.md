@@ -3,11 +3,11 @@
 
 # problem statement
 
-golang package virtualizing fs interactions
+golang package virtualizing os interactions
 
 # features
 
-- API compatible w/ native go fs interactions
+- API compatible w/ native go os interactions
 - API exposed via interface
 - fake implementation to allow faking interactions
 
