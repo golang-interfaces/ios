@@ -16,7 +16,9 @@ run:
       - -ce
       - |
         echo "installing deps"
-        go get github.com/kardianos/govendor github.com/maxbrunsfeld/counterfeiter
+        go get github.com/kardianos/govendor \
+        github.com/maxbrunsfeld/counterfeiter \
+        github.com/virtual-go/fs # hack until https://github.com/maxbrunsfeld/counterfeiter/issues/50 closed
 
         echo "generating fakes"
         govendor generate +local
