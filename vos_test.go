@@ -3,13 +3,44 @@ package vos
 import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+	"github.com/virtual-go/fs"
+	"os"
 )
 
-var _ = Context("vos", func() {
+var _ = Context("VOS", func() {
 	Context("New", func() {
-		It("should return Vos", func() {
+		It("should return VOS", func() {
 			/* arrange/act/assert */
-			Expect(New()).Should(Not(BeNil()))
+			Expect(New(new(fs.Fake))).
+				Should(Not(BeNil()))
+		})
+	})
+	Context("FindProcess", func() {
+		It("should return expected process", func() {
+			/* arrange */
+			providedPID := os.Getpid()
+			expectedProcess, _ := os.FindProcess(providedPID)
+			objectUnderTest := _vOS{}
+
+			/* act */
+			actualProcess, actualErr := objectUnderTest.FindProcess(providedPID)
+
+			/* assert */
+			Expect(actualProcess).To(Equal(expectedProcess))
+			Expect(actualErr).To(BeNil())
+		})
+	})
+	Context("Getpid", func() {
+		It("should return expected PID", func() {
+			/* arrange */
+			expectedPID := os.Getpid()
+			objectUnderTest := _vOS{}
+
+			/* act */
+			actualPID := objectUnderTest.Getpid()
+
+			/* assert */
+			Expect(actualPID).To(Equal(expectedPID))
 		})
 	})
 	Context("Getenv proceeding Setenv", func() {
@@ -18,7 +49,7 @@ var _ = Context("vos", func() {
 			providedName := "dummyName"
 			providedValue := "dummyValue"
 			expectedValue := providedValue
-			objectUnderTest := New()
+			objectUnderTest := _vOS{}
 
 			objectUnderTest.Setenv(providedName, providedValue)
 
@@ -27,6 +58,20 @@ var _ = Context("vos", func() {
 
 			/* assert */
 			Expect(actualValue).To(Equal(expectedValue))
+		})
+	})
+	Context("Getwd", func() {
+		It("should return expected process", func() {
+			/* arrange */
+			expectedWd, _ := os.Getwd()
+			objectUnderTest := _vOS{}
+
+			/* act */
+			actualWd, actualErr := objectUnderTest.Getwd()
+
+			/* assert */
+			Expect(actualWd).To(Equal(expectedWd))
+			Expect(actualErr).To(BeNil())
 		})
 	})
 })

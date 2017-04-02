@@ -1,13 +1,15 @@
 package vos
 
 import (
+	"github.com/virtual-go/fs"
 	"os"
 )
 
-//go:generate counterfeiter -o ./fake.go --fake-name Fake ./ Vos
+//go:generate counterfeiter -o ./fake.go --fake-name Fake ./ VOS
 
 // virtual operating system interface
-type Vos interface {
+type VOS interface {
+	fs.FS
 	// Exit causes the current program to exit with the given status code.
 	// Conventionally, code zero indicates success, non-zero an error.
 	// The program terminates immediately; deferred functions are not run.
@@ -40,32 +42,36 @@ type Vos interface {
 	Setenv(key, value string) error
 }
 
-func New() Vos {
-	return _vos{}
+func New(fs fs.FS) VOS {
+	return _vOS{
+		FS: fs,
+	}
 }
 
-type _vos struct{}
+type _vOS struct {
+	fs.FS
+}
 
-func (this _vos) Exit(code int) {
+func (this _vOS) Exit(code int) {
 	os.Exit(code)
 }
 
-func (this _vos) FindProcess(pid int) (*os.Process, error) {
+func (this _vOS) FindProcess(pid int) (*os.Process, error) {
 	return os.FindProcess(pid)
 }
 
-func (this _vos) Getenv(key string) string {
+func (this _vOS) Getenv(key string) string {
 	return os.Getenv(key)
 }
 
-func (this _vos) Getpid() int {
+func (this _vOS) Getpid() int {
 	return os.Getpid()
 }
 
-func (this _vos) Setenv(key, value string) error {
+func (this _vOS) Setenv(key, value string) error {
 	return os.Setenv(key, value)
 }
 
-func (this _vos) Getwd() (string, error) {
+func (this _vOS) Getwd() (string, error) {
 	return os.Getwd()
 }
