@@ -7,7 +7,7 @@ golang package virtualizing fs interactions
 
 # features
 
-- API compatible w/ native go fs interactions
+- API compatible w/ native [os package](https://golang.org/pkg/os/)
 - API exposed via interface
 - fake implementation to allow faking interactions
 

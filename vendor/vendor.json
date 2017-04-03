@@ -165,10 +165,10 @@
 			"revisionTime": "2016-03-05T21:39:52Z"
 		},
 		{
-			"checksumSHA1": "ksvWwLX43Kax0WSDrVS3ZXBsy1Y=",
+			"checksumSHA1": "bUW2EgOVl2ylWG3ApLnDokrjNYg=",
 			"path": "github.com/virtual-go/fs",
-			"revision": "07abcb56c29a8e94b4bac39cf5c2027e9339db81",
-			"revisionTime": "2017-04-02T02:07:11Z"
+			"revision": "42a86c1b4bd9306c3785a29510411e22e566b2b3",
+			"revisionTime": "2017-04-02T18:23:26Z"
 		}
 	],
 	"rootPath": "github.com/virtual-go/vos"
