@@ -43,35 +43,35 @@ type VOS interface {
 }
 
 func New(fs fs.FS) VOS {
-	return _vOS{
+	return _VOS{
 		FS: fs,
 	}
 }
 
-type _vOS struct {
+type _VOS struct {
 	fs.FS
 }
 
-func (this _vOS) Exit(code int) {
+func (this _VOS) Exit(code int) {
 	os.Exit(code)
 }
 
-func (this _vOS) FindProcess(pid int) (*os.Process, error) {
+func (this _VOS) FindProcess(pid int) (*os.Process, error) {
 	return os.FindProcess(pid)
 }
 
-func (this _vOS) Getenv(key string) string {
+func (this _VOS) Getenv(key string) string {
 	return os.Getenv(key)
 }
 
-func (this _vOS) Getpid() int {
+func (this _VOS) Getpid() int {
 	return os.Getpid()
 }
 
-func (this _vOS) Setenv(key, value string) error {
+func (this _VOS) Setenv(key, value string) error {
 	return os.Setenv(key, value)
 }
 
-func (this _vOS) Getwd() (string, error) {
+func (this _VOS) Getwd() (string, error) {
 	return os.Getwd()
 }

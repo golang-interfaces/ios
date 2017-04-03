@@ -35,6 +35,13 @@ type FS interface {
 	// If there is an error, it will be of type *PathError.
 	Open(name string) (*os.File, error)
 
+	// OpenFile is the generalized open call; most users will use Open
+	// or Create instead. It opens the named file with specified flag
+	// (O_RDONLY etc.) and perm, (0666 etc.) if applicable. If successful,
+	// methods on the returned File can be used for I/O.
+	// If there is an error, it will be of type *PathError.
+	OpenFile(name string, flag int, perm os.FileMode) (*os.File, error)
+
 	// RemoveAll removes path and any children it contains.
 	// It removes everything it can but returns the first error
 	// it encounters. If the path does not exist, RemoveAll

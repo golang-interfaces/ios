@@ -20,7 +20,7 @@ var _ = Context("VOS", func() {
 			/* arrange */
 			providedPID := os.Getpid()
 			expectedProcess, _ := os.FindProcess(providedPID)
-			objectUnderTest := _vOS{}
+			objectUnderTest := _VOS{}
 
 			/* act */
 			actualProcess, actualErr := objectUnderTest.FindProcess(providedPID)
@@ -34,7 +34,7 @@ var _ = Context("VOS", func() {
 		It("should return expected PID", func() {
 			/* arrange */
 			expectedPID := os.Getpid()
-			objectUnderTest := _vOS{}
+			objectUnderTest := _VOS{}
 
 			/* act */
 			actualPID := objectUnderTest.Getpid()
@@ -49,7 +49,7 @@ var _ = Context("VOS", func() {
 			providedName := "dummyName"
 			providedValue := "dummyValue"
 			expectedValue := providedValue
-			objectUnderTest := _vOS{}
+			objectUnderTest := _VOS{}
 
 			objectUnderTest.Setenv(providedName, providedValue)
 
@@ -64,7 +64,7 @@ var _ = Context("VOS", func() {
 		It("should return expected process", func() {
 			/* arrange */
 			expectedWd, _ := os.Getwd()
-			objectUnderTest := _vOS{}
+			objectUnderTest := _VOS{}
 
 			/* act */
 			actualWd, actualErr := objectUnderTest.Getwd()
