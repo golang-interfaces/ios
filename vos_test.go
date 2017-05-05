@@ -3,15 +3,18 @@ package vos
 import (
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
-	"github.com/virtual-go/fs"
 	"os"
 )
 
 var _ = Context("VOS", func() {
+	wd, err := os.Getwd()
+	if nil != err {
+		panic(err)
+	}
 	Context("New", func() {
 		It("should return VOS", func() {
 			/* arrange/act/assert */
-			Expect(New(new(fs.Fake))).
+			Expect(New()).
 				Should(Not(BeNil()))
 		})
 	})
@@ -71,6 +74,70 @@ var _ = Context("VOS", func() {
 
 			/* assert */
 			Expect(actualWd).To(Equal(expectedWd))
+			Expect(actualErr).To(BeNil())
+		})
+	})
+
+	Context("Open", func() {
+		It("should return expected file", func() {
+			/* arrange */
+			providedName := wd
+
+			expectedFile, _ := os.Open(providedName)
+			expectedFileStat, _ := expectedFile.Stat()
+			defer expectedFile.Close()
+
+			objectUnderTest := New()
+
+			/* act */
+			actualFile, actualErr := objectUnderTest.Open(providedName)
+			actualFileStat, _ := actualFile.Stat()
+			defer actualFile.Close()
+
+			/* assert */
+			// compare FileInfo's; can't compare File's because FD will be unique
+			Expect(actualFileStat).To(Equal(expectedFileStat))
+			Expect(actualErr).To(BeNil())
+		})
+	})
+	Context("OpenFile", func() {
+		It("should return expected file", func() {
+			/* arrange */
+			providedName := wd
+			providedFlag := os.O_RDONLY
+			providedPerm := os.FileMode(0)
+
+			expectedFile, _ := os.OpenFile(providedName, providedFlag, providedPerm)
+			expectedFileStat, _ := expectedFile.Stat()
+			defer expectedFile.Close()
+
+			objectUnderTest := New()
+
+			/* act */
+			actualFile, actualErr := objectUnderTest.OpenFile(providedName, providedFlag, providedPerm)
+			actualFileStat, _ := actualFile.Stat()
+			defer actualFile.Close()
+
+			/* assert */
+			// compare FileInfo's; can't compare File's because FD will be unique
+			Expect(actualFileStat).To(Equal(expectedFileStat))
+			Expect(actualErr).To(BeNil())
+		})
+	})
+	Context("Stat", func() {
+		It("should return expected fileinfo", func() {
+			/* arrange */
+			providedName := wd
+
+			expectedFileInfo, _ := os.Stat(providedName)
+
+			objectUnderTest := New()
+
+			/* act */
+			actualFileinfo, actualErr := objectUnderTest.Stat(providedName)
+
+			/* assert */
+			Expect(actualFileinfo).To(Equal(expectedFileInfo))
 			Expect(actualErr).To(BeNil())
 		})
 	})
