@@ -9,5 +9,5 @@ import (
 
 func Test(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "virtual-go/vos")
+	RunSpecs(t, "golang-interfaces/vos")
 }
