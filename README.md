@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/virtual-go/vos.svg?branch=master)](https://travis-ci.org/virtual-go/vos)
-[![Coverage](https://codecov.io/gh/virtual-go/vos/branch/master/graph/badge.svg)](https://codecov.io/gh/virtual-go/vos)
+[![Build Status](https://travis-ci.org/golang-interfaces/vos.svg?branch=master)](https://travis-ci.org/golang-interfaces/vos)
+[![Coverage](https://codecov.io/gh/golang-interfaces/vos/branch/master/graph/badge.svg)](https://codecov.io/gh/golang-interfaces/vos)
 
 # problem statement
 
@@ -19,7 +19,7 @@ native [os package](https://golang.org/pkg/os/) exposed via interface
 
 for every release:
 
-- source code will be [tagged](https://github.com/virtual-go/vos/tags).
+- source code will be [tagged](https://github.com/golang-interfaces/vos/tags).
 
 # Versioning
 
