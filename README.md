@@ -3,12 +3,11 @@
 
 # problem statement
 
-os package for virtual-go
+native [os package](https://golang.org/pkg/os/) exposed via interface
 
 # features
 
-- API compatible w/ native [os package](https://golang.org/pkg/os/)
-- API exposed via interface
+- API compatible w/ native [os package](https://golang.org/pkg/os/) exposed via interface
 - fake implementation to allow faking interactions
 
 > *Be advised: this project is currently at Major version zero. Per the
