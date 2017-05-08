@@ -1,4 +1,4 @@
-package vos
+package ios
 
 import (
 	. "github.com/onsi/ginkgo"
@@ -6,13 +6,13 @@ import (
 	"os"
 )
 
-var _ = Context("VOS", func() {
+var _ = Context("IOS", func() {
 	wd, err := os.Getwd()
 	if nil != err {
 		panic(err)
 	}
 	Context("New", func() {
-		It("should return VOS", func() {
+		It("should return IOS", func() {
 			/* arrange/act/assert */
 			Expect(New()).
 				Should(Not(BeNil()))
@@ -23,7 +23,7 @@ var _ = Context("VOS", func() {
 			/* arrange */
 			providedPID := os.Getpid()
 			expectedProcess, _ := os.FindProcess(providedPID)
-			objectUnderTest := _VOS{}
+			objectUnderTest := _IOS{}
 
 			/* act */
 			actualProcess, actualErr := objectUnderTest.FindProcess(providedPID)
@@ -37,7 +37,7 @@ var _ = Context("VOS", func() {
 		It("should return expected PID", func() {
 			/* arrange */
 			expectedPID := os.Getpid()
-			objectUnderTest := _VOS{}
+			objectUnderTest := _IOS{}
 
 			/* act */
 			actualPID := objectUnderTest.Getpid()
@@ -52,7 +52,7 @@ var _ = Context("VOS", func() {
 			providedName := "dummyName"
 			providedValue := "dummyValue"
 			expectedValue := providedValue
-			objectUnderTest := _VOS{}
+			objectUnderTest := _IOS{}
 
 			objectUnderTest.Setenv(providedName, providedValue)
 
@@ -67,7 +67,7 @@ var _ = Context("VOS", func() {
 		It("should return expected process", func() {
 			/* arrange */
 			expectedWd, _ := os.Getwd()
-			objectUnderTest := _VOS{}
+			objectUnderTest := _IOS{}
 
 			/* act */
 			actualWd, actualErr := objectUnderTest.Getwd()

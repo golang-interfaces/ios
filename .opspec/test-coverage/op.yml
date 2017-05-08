@@ -57,8 +57,8 @@ run:
           echo "Coverage ok"
         fi
     dirs:
-      /go/src/github.com/golang-interfaces/vos: srcDir
+      /go/src/github.com/golang-interfaces/ios: srcDir
     envVars:
       MINIMUM_COVERAGE: '64'
     image: { ref: 'golang:1.8' }
-    workDir: /go/src/github.com/golang-interfaces/vos
+    workDir: /go/src/github.com/golang-interfaces/ios
