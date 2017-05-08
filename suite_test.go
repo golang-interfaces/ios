@@ -1,4 +1,4 @@
-package vos
+package ios
 
 import (
 	. "github.com/onsi/ginkgo"
@@ -9,5 +9,5 @@ import (
 
 func Test(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "golang-interfaces/vos")
+	RunSpecs(t, "golang-interfaces/ios")
 }
